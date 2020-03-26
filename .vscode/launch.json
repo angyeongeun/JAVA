@@ -1,0 +1,91 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex01<JAVA_3569582b>",
+            "request": "launch",
+            "mainClass": "Day01.Ex01",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex02<JAVA_3569582b>",
+            "request": "launch",
+            "mainClass": "Day01.Ex02",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex03<JAVA_3569582b>",
+            "request": "launch",
+            "mainClass": "Day01.Ex03",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex04<JAVA_3569582b>",
+            "request": "launch",
+            "mainClass": "Day01.Ex04",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex05<JAVA_3569582b>",
+            "request": "launch",
+            "mainClass": "Day01.Ex05",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex06<JAVA_3569582b>",
+            "request": "launch",
+            "mainClass": "Day01.Ex06",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex01<JAVA_3569582b>(1)",
+            "request": "launch",
+            "mainClass": "Day02.Ex01",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex02<JAVA_3569582b>(1)",
+            "request": "launch",
+            "mainClass": "Day02.Ex02",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex03<JAVA_3569582b>(1)",
+            "request": "launch",
+            "mainClass": "Day02.Ex03",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex04<JAVA_3569582b>(1)",
+            "request": "launch",
+            "mainClass": "Day02.Ex04",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ex05<JAVA_3569582b>(1)",
+            "request": "launch",
+            "mainClass": "Day02.Ex05",
+            "projectName": "JAVA_3569582b"
+        }
+    ]
+}
