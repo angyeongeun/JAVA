@@ -4,7 +4,7 @@ package Day03;
 import java.util.Scanner;
 public class Ex12{
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+
 
         //1. for 문으로 무한루프 만들기
 
