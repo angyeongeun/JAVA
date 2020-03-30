@@ -97,7 +97,6 @@ public class StarPrinter{
             }
     }
 
-
     private void StarPrinter4(int lineNumber){
 
         for(int i =1; i<= lineNumber; i++){
@@ -115,7 +114,6 @@ public class StarPrinter{
 
     }
 
-    
     private void StarPrinter5(int lineNumber){
 
 
@@ -132,6 +130,7 @@ public class StarPrinter{
         System.out.println(stars);
         }
     }
+   
     private void StarPrinter6(int lineNumber){
 
 
@@ -150,7 +149,6 @@ public class StarPrinter{
 
 
     }
-
 
     private void StarPrinter7(int lineNumber){
 
@@ -174,7 +172,6 @@ public class StarPrinter{
 
     }
 
-    
     private void StarPrinter8(int lineNumber){
 
 
@@ -236,9 +233,7 @@ public class StarPrinter{
 
     }
 
-    
     private void StarPrinter10(int lineNumber){
-
 
         for(int i =1; i<= lineNumber; i++) {
             String stars = "";
@@ -265,7 +260,7 @@ public class StarPrinter{
 
 
         
-        for(int j = 1; j  <= lineNumber + 3 - 2*(i-1); j++){
+        for(int j = 1; j  <= lineNumber + lineNumber - 2*i ; j++){
             stars += " ";
         }
         for(int j = 1  ; j <= i; j++){
@@ -274,6 +269,8 @@ public class StarPrinter{
         }
         
         System.out.println(stars);
+    
+
     }
 
 
