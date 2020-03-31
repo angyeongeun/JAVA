@@ -61,7 +61,7 @@ public class Ex05{
         int index = indexOf(array, EMPTY_STRING);
         for(int i = 0; i< array.length; i++){
 
-        if(array != -1) {
+        if(index != -1) {
                 
 
                 array[index] = input; 
@@ -95,14 +95,14 @@ public class Ex05{
 
 
 
-    private static boolean contains(String[] array, String keyword){
-        //q배열을 돌며 빈공간 -> keyword 이 있으면 true, 없으면 false
-        for(int i =0; i< array.length; i++){
-            if(array[i].equals(keyword)){
-                return true;
-            }
-        }return false;
-    }
+    // private static boolean contains(String[] array, String keyword){
+    //     //q배열을 돌며 빈공간 -> keyword 이 있으면 true, 없으면 false
+    //     for(int i =0; i< array.length; i++){
+    //         if(array[i].equals(keyword)){
+    //             return true;
+    //         }
+    //     }return false;
+    // }
 
 
 

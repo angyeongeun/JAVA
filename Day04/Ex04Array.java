@@ -48,11 +48,11 @@ public class Ex04Array{
 
         }
 
-        scanner.close();
+       
 
     
 
-
+    
         
 
         
