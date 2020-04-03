@@ -1,9 +1,15 @@
-package Day05;
+package Util;
 //배열에 필요한 메소드들을 구현해 놓은 클래스
+//private이라고 되어 있을경우, 다른 클래스에서 사용하지 못할 수도 있다?
 
 
 
 import java.util.Arrays;
+
+import BoardProject.Board;
+import BoardProject.Member;
+import BoardProject.Reply;
+
 public class MyArray{
 
     public static void main(String[] args) {
@@ -13,7 +19,7 @@ public class MyArray{
         int[] myArr = {1,2,3,4,5,6,7};
 
         System.out.println(arr.length);
-        arr = removeByIndex(arr, element); //return값이 arr이니까  덮어씌워 줘야함!
+        arr = add(arr, element); //return값이 arr이니까  덮어씌워 줘야함!
         System.out.println(arr.length);
         System.out.println(indexOf(arr, 20));
         
@@ -102,7 +108,7 @@ public class MyArray{
     
 
     //배열의 크기를 1 늘려주는 메소드
-    private static int[] expand(int[] arr){
+    public static int[] expand(int[] arr){
         //먼저 기존의 배열의 값들을 복사해오자
 
         int[] temp = new int[arr.length];
@@ -118,7 +124,7 @@ public class MyArray{
         return arr;
     }
     //overloading int -> string
-    private static String[] expand(String[] arr){
+    public static String[] expand(String[] arr){
         //먼저 기존의 배열의 값들을 복사해오자
 
         String[] temp = new String[arr.length];
@@ -153,8 +159,12 @@ public class MyArray{
 
 
     }
+
+
+
+
     //overloading int -> string
-    private static String[] add(String[] arr, String element){
+    public static String[] add(String[] arr, String element){
         int index = arr.length;
         ///{ }, 5 => {5}
         //넘어온 배열의 크기를  늘리고 늘어난 크기  - 1의 인덱스에 추가
@@ -170,10 +180,13 @@ public class MyArray{
 
     }
 
+
     
 
+
+
     //특정 숫자를 빼주는 메소드
-    private static int[] remove(int[] arr, int element){
+    public static int[] remove(int[] arr, int element){
         //먼저 해당하는 번호를 찾아서 그번호 전후로 배열을 분리 
         //그리고 해당 번호를 빼고 그 앞 배열 뒷배열을 연결시킨다.
         // {1,2,3} -> {1},{3} -> {1,3}
@@ -242,7 +255,7 @@ public class MyArray{
 
     }
     //overloading int -> string
-    private static String[] remove(String[] arr, String element){
+    public static String[] remove(String[] arr, String element){
         //먼저 해당하는 번호를 찾아서 그번호 전후로 배열을 분리 
         //그리고 해당 번호를 빼고 그 앞 배열 뒷배열을 연결시킨다.
         // {1,2,3} -> {1},{3} -> {1,3}
@@ -330,6 +343,115 @@ public class MyArray{
     }
 
 
+
+
+
+
+
+
+
+//<------------------🖐🏼🖐🏼🖐🏼🖐🏼🖐🏼🖐🏼🖐🏼🖐🏼🖐🏼-------private method for specific work-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+        //우리가 만든 member을 자동으로 expand하는 메소드
+    
+        public static Member[] expand(Member[] arr){
+            Member[] temp = new Member[arr.length];
+            for(int i = 0; i < arr.length; i++){
+                
+                temp[i] = arr[i];
+            }
+    
+            
+            arr = new Member[temp.length +1];
+            for(int i =0; i < temp.length; i++){
+                arr[i] = temp[i];
+            }
+    
+            return arr;
+        }
+    
+        //우리가 만든 member을 자동으로 add하는 메소드
+    
+        public static Member[] add(Member[] arr, Member element){
+            int index = arr.length;
+            arr = expand(arr);
+            arr[index] = element;
+            return arr;
+    
+            
+        }
+
+
+
+
+
+        //우리가 만든 Reply을 자동으로 expand하는 메소드
+    
+        public static Reply[] expand(Reply[] arr){
+                    Reply[] temp = new Reply[arr.length];
+                    for(int i = 0; i < arr.length; i++){
+                        
+                        temp[i] = arr[i];
+                    }
+            
+                    
+                    arr = new Reply[temp.length +1];
+                    for(int i =0; i < temp.length; i++){
+                        arr[i] = temp[i];
+                    }
+            
+                    return arr;
+                }
+            
+        //우리가 만든 Reply을 자동으로 add하는 메소드
+            
+        public static Reply[] add(Reply[] arr, Reply element){
+                    int index = arr.length;
+                    arr = expand(arr);
+                    arr[index] = element;
+                    return arr;
+            
+                    
+                }
+
+
+
+
+
+        
+        //우리가 만든 게시글을 자동으로 expand하는 메소드
+    
+        public static Board[] expand(Board[] arr){
+        Board[] temp = new Board[arr.length];
+        for(int i = 0; i < arr.length; i++){
+            
+            temp[i] = arr[i];
+        }
+
+        
+        arr = new Board[temp.length +1];
+        for(int i =0; i < temp.length; i++){
+            arr[i] = temp[i];
+        }
+
+        return arr;
+    }
+
+        //우리가 만든 게시글을 자동으로 add하는 메소드
+
+        public static Board[] add(Board[] arr, Board element){
+        int index = arr.length;
+        arr = expand(arr);
+        arr[index] = element;
+        return arr;
+
+        
+    }
 
 
 }

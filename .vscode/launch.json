@@ -8,27 +8,6 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - Ex03",
-            "request": "launch",
-            "mainClass": "Day05.Ex03",
-            "projectName": "JAVA_3569582b"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Ex01",
-            "request": "launch",
-            "mainClass": "Day05.Ex01",
-            "projectName": "JAVA_3569582b"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Ex03",
-            "request": "launch",
-            "mainClass": "Day04.Ex03",
-            "projectName": "JAVA_3569582b"
-        },
-        {
-            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
