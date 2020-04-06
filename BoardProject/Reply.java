@@ -2,9 +2,9 @@ package BoardProject;
 
 
 public class Reply{
-    int id;
-    int boardId;
-    int memberId;
+    public int id;
+    public int boardId;
+    public int memberId;
     String content;
 
 

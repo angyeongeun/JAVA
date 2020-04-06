@@ -12,7 +12,49 @@ package BoardProject;
 
 public class ReplyUtil{
 
-    public static 
+    public static int replyId(Reply[] replyArr, int id) {
+        for(int i = 0; i <replyArr.length; i++){
+            if(replyArr[i].id ==id){
+                return replyArr[i].id;
+            }
+        }
+        return -1;
+    }
+
+    
+    public static int boardId(Reply[] replyArr, int id) {
+        for(int i = 0; i <replyArr.length; i++){
+            if(replyArr[i].id ==id){
+                return replyArr[i].boardId;
+            }
+        }
+        return -1;
+    }
+
+
+
+    public static int memberId(Reply[] replyArr, int id) {
+        for(int i = 0; i <replyArr.length; i++){
+            if(replyArr[i].id ==id){
+                return replyArr[i].memberId;
+            }
+        }
+        return -1;
+    }
+
+
+    public static String content(Reply[] replyArr, int id) {
+        for(int i = 0; i <replyArr.length; i++){
+            if(replyArr[i].id ==id){
+                return replyArr[i].content;
+            }
+        }
+        return null;
+    }
+
+
+
+
 
 
 

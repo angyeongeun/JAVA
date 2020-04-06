@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Scanner;
 
+import Util.MyArray;
 import Util.MyScanner;
 
 
@@ -11,6 +12,13 @@ public class BoardEx{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Board[] boardArr = new Board[5];
+        Member member = new Member();
+        member.id = 1;
+        member.nickname = "운영자";
+
+        Member[] memberArr = new Member[0];
+        memberArr = MyArray.add(memberArr, member);
+
         for(int i =0; i< boardArr.length; i++){
             boardArr[i] = new Board();
         }
@@ -30,16 +38,29 @@ public class BoardEx{
 
                 for(int i = 0; i < boardArr.length; i++ ){
                     System.out.println("제목" + boardArr[i].title);
-                    System.out.print("제목" + boardArr[i].content);
+                    System.out.println("   내용" + boardArr[i].content);
 
 
                 }
-                BoardUtil.list(boardArr);
+                BoardUtil.list(boardArr , memberArr);
                 //위의 코드를 여기에 직접넣지 말고 배열을 주면 거기서 출력해주는 메소드로 분리를 해보자
                 System.out.println("1. 글선택 2. 뒤로");
                 System.out.print(">");
                 userChoice = MyScanner.nextInt(scanner);
                 if(userChoice ==1){
+                    BoardUtil.list(boardArr ,memberArr);
+                    if(boardArr.length > 0){
+                        System.out.println("1. 글 개별보기 2. 뒤로가기");
+                        System.out.println("> ");
+                        userChoice = MyScanner.nextInt(scanner);
+                        if(userChoice ==1){
+                            BoardUtil.showOne(boardArr, scanner, memberArr);
+                        }else if(userChoice == 2){
+                        BoardUtil.write(boardArr, scanner, memberArr);
+
+                        }else if(userChoice ==3){
+                        System.out.println("thank u for using!!!");
+                    }
                 //먼저 해당하는 번호가 우리배열의 각요소들의 id로 존재하는지 체크하고 존재하면 
                 //해당 글 보기로 이동 - 없으면 없는글이라고 해줘야.
 
@@ -56,14 +77,15 @@ public class BoardEx{
                 if(b == null){
                     System.out.println("doesn't exist!!");
                 }else{
-                    System.out.println("제목" + b.title);
-                    System.out.println("작성자" + b.writerId);
-                    System.out.println("작성일" + b.writtenDate);
-                    System.out.println("내용" + b.content);
+                    System.out.println("제목 :" + b.title);
+                    System.out.println("작성자 :" + b.writerId);
+                    System.out.println("작성일 :" + b.writtenDate);
+                    System.out.println("내용 :" + b.content);
                     System.out.println("1. 수정 2. 삭제 3. 뒤로");
                     userChoice =scanner.nextInt();
                 }
             }
+        }
        
                 
             }else if(userChoice ==2){
@@ -76,7 +98,7 @@ public class BoardEx{
                 int index =1;
                 //for문을 이용해서 boardarr 중에서 작성일이 널이 아닌곳의 위치를 찾아서 그 글의 id+1을 우리의 index에 넣고
                 //index를 b.id에 넣는다
-                //만약 작성일이 널이 나닌곳을 못찾는다 = 쓰여진 글이 하나도 없다는 의미이므로 index는 그대로 1이 될테니깐 문제가 없다
+                //만약 작성일이 널이 아닌곳을 못찾는다 = 쓰여진 글이 하나도 없다는 의미이므로 index는 그대로 1이 될테니깐 문제가 없다
                 for(int i = boardArr.length -1; i >=0; i--){
                     if(boardArr[i].writtenDate != null) {
                         index = boardArr[i].id +1;
@@ -123,4 +145,4 @@ public class BoardEx{
         }
         
     }
-}
+    }

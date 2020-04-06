@@ -306,16 +306,8 @@ public class MyArray{
 
                 arr[backIndex] = back[i];
                 backIndex++;
-                
-                
-
-
-            }
-
-
-
             
-
+            }
 
         }
          
@@ -424,7 +416,7 @@ public class MyArray{
 
 
         
-        //우리가 만든 게시글을 자동으로 expand하는 메소드
+        //우리가 만든 Board 자동으로 expand하는 메소드 🎈
     
         public static Board[] expand(Board[] arr){
         Board[] temp = new Board[arr.length];
@@ -442,16 +434,267 @@ public class MyArray{
         return arr;
     }
 
-        //우리가 만든 게시글을 자동으로 add하는 메소드
-
         public static Board[] add(Board[] arr, Board element){
         int index = arr.length;
         arr = expand(arr);
         arr[index] = element;
         return arr;
+        }
+       
+
+       
+        // board의 index 구하는 메소드 (board, member, reply 모두..) 🎈
+        public static int indexOf(Board[] arr, Board b){
+            for(int i =0; i< arr.length; i++){
+                if(b.id == arr[i].id){
+                    return i;
+                }
+            }
+            
+            
+            return -1;
+        }
+
+        public static int indexOf(Member[] arr, Member m){
+            for(int i =0; i< arr.length; i++){
+                if(m.id == arr[i].id){
+                    return i;
+                }
+            }
+            
+            
+            return -1;
+        }
+
+        public static int indexOf(Reply[] arr, Reply r){
+            for(int i =0; i< arr.length; i++){
+                if(r.id == arr[i].id){
+                    return i;
+                }
+            }
+            
+            
+            return -1;
+        }
+
+
 
         
+
+
+
+
+        //board, member, reply 에 대한 remove method🎈
+            
+  
+        public static Board[] remove(Board[] arr, Board element){
+                //먼저 해당하는 번호를 찾아서 그번호 전후로 배열을 분리 
+                //그리고 해당 번호를 빼고 그 앞 배열 뒷배열을 연결시킨다.
+                // {1,2,3} -> {1},{3} -> {1,3}
+        
+        
+                int index = indexOf(arr, element);
+        
+                // for(int i = 0; i < index; i++)
+                // for(int i = index +1; i < arr.length; i+)
+        
+                if(index !=-1){
+                    Board[] front = new Board[index];
+                    for(int i =0; i< front.length; i++){
+                        front[i] = arr[i];
+                    }
+                    // back -> total - front -1
+                    Board[] back = new Board[arr.length - front.length -1];
+                    
+        
+                    int backIndex =0;
+        
+        
+                    for(int i = index +1; i <  arr.length; i++){
+                        //그럼 우리가 back을 위한 위치를 따로 만들어서 0부터 1 씩 증가하면서 위치를 직접 지정해줘야함
+        
+                        back[backIndex] =arr[i];
+                        backIndex++;
+        
+                    }
+                    arr = new Board[front.length + back.length];
+                    //for( int i =0; i<arr.length; i++){
+                        //만약 front의 길이가 3이고 back의 길이가 2면? -> i는 5번 반복
+        
+        
+                    //앞을 복사하는 for문 배열
+                    for(int i = 0; i < front.length; i++){
+                        arr[i] =front[i];
+        
+                        }
+        
+        
+        
+                    //back을 복사하는 for문 배열
+                    //backindex를 0으로 초기화
+        
+                    backIndex = front.length;
+                    for(int i =0; i< back.length; i++){
+        
+                        arr[backIndex] = back[i];
+                        backIndex++;
+                        
+                        
+        
+        
+                    }
+        
+        
+        
+                    
+        
+        
+                }
+                 
+        
+                return arr;
+        
+            }
+        
+    
+     
+        public static Member[] remove(Member[] arr, Member element){
+            //먼저 해당하는 번호를 찾아서 그번호 전후로 배열을 분리 
+            //그리고 해당 번호를 빼고 그 앞 배열 뒷배열을 연결시킨다.
+            // {1,2,3} -> {1},{3} -> {1,3}
+    
+    
+            int index = indexOf(arr, element);
+    
+            // for(int i = 0; i < index; i++)
+            // for(int i = index +1; i < arr.length; i+)
+    
+            if(index !=-1){
+                Member[] front = new Member[index];
+                for(int i =0; i< front.length; i++){
+                    front[i] = arr[i];
+                }
+                // back -> total - front -1
+                Member[] back = new Member[arr.length - front.length -1];
+                
+    
+                int backIndex =0;
+    
+    
+                for(int i = index +1; i <  arr.length; i++){
+                    //그럼 우리가 back을 위한 위치를 따로 만들어서 0부터 1 씩 증가하면서 위치를 직접 지정해줘야함
+    
+                    back[backIndex] =arr[i];
+                    backIndex++;
+    
+                }
+                arr = new Member[front.length + back.length];
+                //for( int i =0; i<arr.length; i++){
+                    //만약 front의 길이가 3이고 back의 길이가 2면? -> i는 5번 반복
+    
+    
+                //앞을 복사하는 for문 배열
+                for(int i = 0; i < front.length; i++){
+                    arr[i] =front[i];
+    
+                    }
+    
+    
+    
+                //back을 복사하는 for문 배열
+                //backindex를 0으로 초기화
+    
+                backIndex = front.length;
+                for(int i =0; i< back.length; i++){
+    
+                    arr[backIndex] = back[i];
+                    backIndex++;
+                    
+                    
+    
+    
+                }
+    
+    
+    
+                
+    
+    
+            }
+             
+    
+            return arr;
+    
+        }
+    
+
+      
+        public static Reply[] remove(Reply[] arr, Reply element){
+        //먼저 해당하는 번호를 찾아서 그번호 전후로 배열을 분리 
+        //그리고 해당 번호를 빼고 그 앞 배열 뒷배열을 연결시킨다.
+        // {1,2,3} -> {1},{3} -> {1,3}
+
+
+        int index = indexOf(arr, element);
+
+        // for(int i = 0; i < index; i++)
+        // for(int i = index +1; i < arr.length; i+)
+
+        if(index !=-1){
+            Reply[] front = new Reply[index];
+            for(int i =0; i< front.length; i++){
+                front[i] = arr[i];
+            }
+            // back -> total - front -1
+            Reply[] back = new Reply[arr.length - front.length -1];
+            
+
+            int backIndex =0;
+
+
+            for(int i = index +1; i <  arr.length; i++){
+                //그럼 우리가 back을 위한 위치를 따로 만들어서 0부터 1 씩 증가하면서 위치를 직접 지정해줘야함
+
+                back[backIndex] =arr[i];
+                backIndex++;
+
+            }
+            arr = new Reply[front.length + back.length];
+            //for( int i =0; i<arr.length; i++){
+                //만약 front의 길이가 3이고 back의 길이가 2면? -> i는 5번 반복
+
+
+            //앞을 복사하는 for문 배열
+            for(int i = 0; i < front.length; i++){
+                arr[i] =front[i];
+
+                }
+
+
+
+            //back을 복사하는 for문 배열
+            //backindex를 0으로 초기화
+
+            backIndex = front.length;
+            for(int i =0; i< back.length; i++){
+
+                arr[backIndex] = back[i];
+                backIndex++;
+                
+                
+
+
+            }
+
+
+
+            
+
+
+        }
+         
+
+        return arr;
+
     }
-
-
 }

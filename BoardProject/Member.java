@@ -3,7 +3,7 @@ package BoardProject;
 
 
 public class Member{
-    int id;
+    public int id;
     String userName;
     String password;
     String nickname;

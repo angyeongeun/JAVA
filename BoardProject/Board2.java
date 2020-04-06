@@ -8,9 +8,14 @@ import Util.MyScanner;
 
 
 public class Board2{
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Board[] boardArr = new Board[5];
+        Member member = new Member();
+        member.id = 1;
+
         for(int i =0; i< boardArr.length; i++){
             boardArr[i] = new Board();
         }
@@ -26,19 +31,19 @@ public class Board2{
             if(userChoice ==1){
                 BoardUtil.list(boardArr);
                 System.out.print("1. 글 개별보기 2. 뒤로가기");
-                System.out.print(">");
+                System.out.println(">");
 
                 userChoice = MyScanner.nextInt(scanner);
                 if(userChoice == 1){
-                    BoardUtil.showOne(boardArr,scanner);
+                    BoardUtil.showOne(boardArr,scanner, member);
 
+                }
                 }else if(userChoice ==2){
-                    BoardUtil.write(boardArr,scanner);
+                BoardUtil.write(boardArr,scanner);
 
                 }else if(userChoice ==3){
-                    System.out.println("thank you");
-                    break;
-                }
+                System.out.println("thank you for using!!!");
+                break;
             }
         }
     }
