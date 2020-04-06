@@ -8,49 +8,47 @@ package BoardProject;
 // - 회원 번호 -> int memberId
 // - 댓글의 내용 -> string content
 
+import Util.MyArray;
 
 
 public class ReplyUtil{
-
-    public static int replyId(Reply[] replyArr, int id) {
-        for(int i = 0; i <replyArr.length; i++){
-            if(replyArr[i].id ==id){
-                return replyArr[i].id;
+   
+   
+   
+    //해당 게시글의 댓글을 보여주는 메소드
+    public static void list(Reply[] arr, int boardId, Member[] memberArr){
+        for(Reply r: arr){
+            if(r.boardId ==boardId){
+                System.out.println(r.id + " " + r.content + " " + MemberUtil.showNickName(memberArr, r.memberId));
             }
         }
-        return -1;
+    }
+    public static Reply[] insert(Reply[] arr, Reply r){
+        r.id = arr.length > 0 ? arr[arr.length -1].id +1 :1 ;
+        //위의 선언과 같음 if(arr.length > 0){
+        //     r.id = arr[arr.length -1].id +1;
+        // }
+        arr =MyArray.add(arr, r);
+        return arr;
+    }
+
+    public static Reply[] delete(Reply[] arr, Reply r){
+        arr = MyArray.remove(arr, r);
+        return arr;
     }
 
     
-    public static int boardId(Reply[] replyArr, int id) {
-        for(int i = 0; i <replyArr.length; i++){
-            if(replyArr[i].id ==id){
-                return replyArr[i].boardId;
+    public static int countReply(int boardId, Reply[] replyArr){
+        int count = 0;
+        for(Reply r:replyArr){
+            if(r.boardId == boardId){
+                count++;
             }
         }
-        return -1;
+        return count;
+
     }
 
-
-
-    public static int memberId(Reply[] replyArr, int id) {
-        for(int i = 0; i <replyArr.length; i++){
-            if(replyArr[i].id ==id){
-                return replyArr[i].memberId;
-            }
-        }
-        return -1;
-    }
-
-
-    public static String content(Reply[] replyArr, int id) {
-        for(int i = 0; i <replyArr.length; i++){
-            if(replyArr[i].id ==id){
-                return replyArr[i].content;
-            }
-        }
-        return null;
-    }
 
 
 

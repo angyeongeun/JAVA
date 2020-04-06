@@ -6,23 +6,79 @@ import java.util.Scanner;
 
 import Util.MyArray;
 import Util.MyScanner;
+import BoardProject.BoardReplyWrapper;
 
 
 public class BoardEx{
-    public static void main(String[] args) {
+    
+
+	public static void main(String[] args ) {
+        BoardReplyWrapper wrapper = new BoardReplyWrapper();
         Scanner scanner = new Scanner(System.in);
-        Board[] boardArr = new Board[5];
+        Board[] boardArr = new Board[0];
+        Reply[] replyArr = new Reply[0];
+     
+
+        
         Member member = new Member();
+
+        
+        
         member.id = 1;
         member.nickname = "운영자";
+        member.userName = "admin";
+        member.password = "11";
 
-        Member[] memberArr = new Member[0];
+        Member[] memberArr = new Member[5];
         memberArr = MyArray.add(memberArr, member);
+
+   
 
         for(int i =0; i< boardArr.length; i++){
             boardArr[i] = new Board();
         }
+       
+        for(int i =0; i< memberArr.length; i++){
+            memberArr[i] = new Member();
+        }
 
+        Member admin = new Member();
+        admin.userName = "admin";
+        admin.password = "111";
+        admin.nickname = "he";
+        admin.id = 1;
+        memberArr[0] =admin;
+
+
+    
+        Member logIn = new Member();
+        System.out.print("ID를 입력해주세요 : ");
+        logIn.userName = scanner.nextLine();
+        System.out.print("PW : ");
+        logIn.password = scanner.nextLine();
+        logIn = MemberUtil.logIn(memberArr, logIn);
+        while(logIn==null){// 찾지 못한 경우
+            System.out.println("wrong!");
+            logIn = new Member();
+            System.out.print("ID를 입력해주세요 : ");
+            logIn.userName = scanner.nextLine();
+            System.out.print("pw : ");
+            logIn.password = scanner.nextLine();
+            logIn = MemberUtil.logIn(memberArr, logIn);
+        }
+
+
+
+
+
+
+
+
+
+
+
+        
+        MemberUtil.index(scanner, memberArr, wrapper, member);
 
         while(true){
             System.out.println("---------Board----------");
@@ -31,6 +87,7 @@ public class BoardEx{
             int userChoice = MyScanner.nextInt(scanner);
             if(userChoice ==1){
                 System.out.print("볼 글 :");
+                
                 userChoice = MyScanner.nextInt(scanner);
 
 
@@ -38,25 +95,26 @@ public class BoardEx{
 
                 for(int i = 0; i < boardArr.length; i++ ){
                     System.out.println("제목" + boardArr[i].title);
-                    System.out.println("   내용" + boardArr[i].content);
+                    System.out.println(" 내용" + boardArr[i].content);
 
 
                 }
-                BoardUtil.list(boardArr , memberArr);
+
+                BoardUtil.list(wrapper, memberArr);
                 //위의 코드를 여기에 직접넣지 말고 배열을 주면 거기서 출력해주는 메소드로 분리를 해보자
                 System.out.println("1. 글선택 2. 뒤로");
                 System.out.print(">");
                 userChoice = MyScanner.nextInt(scanner);
                 if(userChoice ==1){
-                    BoardUtil.list(boardArr ,memberArr);
+                    BoardUtil.list(wrapper, memberArr);
                     if(boardArr.length > 0){
                         System.out.println("1. 글 개별보기 2. 뒤로가기");
                         System.out.println("> ");
                         userChoice = MyScanner.nextInt(scanner);
                         if(userChoice ==1){
-                            BoardUtil.showOne(boardArr, scanner, memberArr);
+                            BoardUtil.showOne(wrapper, scanner, memberArr, member);
                         }else if(userChoice == 2){
-                        BoardUtil.write(boardArr, scanner, memberArr);
+                        BoardUtil.write(scanner, memberArr, member, wrapper);
 
                         }else if(userChoice ==3){
                         System.out.println("thank u for using!!!");

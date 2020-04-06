@@ -8,6 +8,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - BoardEx2",
+            "request": "launch",
+            "mainClass": "BoardProject.BoardEx2",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BoardEx",
+            "request": "launch",
+            "mainClass": "BoardProject.BoardEx",
+            "projectName": "JAVA_3569582b"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"

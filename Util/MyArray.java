@@ -466,6 +466,7 @@ public class MyArray{
             return -1;
         }
 
+
         public static int indexOf(Reply[] arr, Reply r){
             for(int i =0; i< arr.length; i++){
                 if(r.id == arr[i].id){
@@ -477,7 +478,15 @@ public class MyArray{
             return -1;
         }
 
-
+        //로그인을 위해서 ID를 비교하는 메소드 -> 20.04.06
+        public static int indexOf(Member[] arr, String userName){
+            for(int i =0; i < arr.length; i++){
+                if(userName.equals(arr[i].userName)){
+                    return i;
+                }
+            }
+            return -1;
+        }
 
         
 
