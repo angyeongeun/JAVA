@@ -15,8 +15,9 @@ public class BoardEx{
 	public static void main(String[] args ) {
         BoardReplyWrapper wrapper = new BoardReplyWrapper();
         Scanner scanner = new Scanner(System.in);
-        Board[] boardArr = new Board[0];
+        
         Reply[] replyArr = new Reply[0];
+        Board[] boardArr = new Board[5];
      
 
         
@@ -87,26 +88,31 @@ public class BoardEx{
             int userChoice = MyScanner.nextInt(scanner);
             if(userChoice ==1){
                 System.out.print("볼 글 :");
-                
+
                 userChoice = MyScanner.nextInt(scanner);
+
+
+            
 
 
 
 
                 for(int i = 0; i < boardArr.length; i++ ){
                     System.out.println("제목" + boardArr[i].title);
-                    System.out.println(" 내용" + boardArr[i].content);
+                    System.out.println("내용" + boardArr[i].content);
 
 
                 }
 
-                BoardUtil.list(wrapper, memberArr);
+                //  BoardUtil.list(wrapper, memberArr); //💥에러 발생
                 //위의 코드를 여기에 직접넣지 말고 배열을 주면 거기서 출력해주는 메소드로 분리를 해보자
+
+
                 System.out.println("1. 글선택 2. 뒤로");
                 System.out.print(">");
                 userChoice = MyScanner.nextInt(scanner);
                 if(userChoice ==1){
-                    BoardUtil.list(wrapper, memberArr);
+                    // BoardUtil.list(wrapper, memberArr);
                     if(boardArr.length > 0){
                         System.out.println("1. 글 개별보기 2. 뒤로가기");
                         System.out.println("> ");

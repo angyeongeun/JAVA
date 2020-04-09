@@ -20,7 +20,7 @@ public class BoardUtil{
         //for문의 i는 무엇으로 초기화 해야하는가?
         for(int i = wrapper.boardArr.length -1 ; i>=0; i--){
             Board b = wrapper.boardArr[i];
-            int count =ReplyUtil.countReply(b.id, wrapper.replyArr);
+            int count = ReplyUtil.countReply(b.id, wrapper.replyArr);
             String message = b.id + " " + b.title + " ";
             if(count!=0){
                 message += "[" + count + "]";
@@ -76,7 +76,7 @@ public class BoardUtil{
     //사용자가 int와 board 배열을 주면 해당 board배열에서 id가 int와 일피하는 board변수를 리턴하는 메소드
     
 
-    
+
     public static Member selectOne(Member[] memberArr, int id) {
 
         for (int i = 0; i < memberArr.length; i++ ){

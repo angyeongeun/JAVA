@@ -175,7 +175,7 @@ public class MemberUtil{
     Member member){
 
         while(true){
-            System.out.println("---------Board----------");
+            System.out.println("------------------Board--------------------");
             System.out.println("1. 글 목록 2. 새로 작성 3. 로그아웃 4. 종료");
             System.out.print(">");
             int userChoice = MyScanner.nextInt(scanner);
