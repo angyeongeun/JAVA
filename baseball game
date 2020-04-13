@@ -1,0 +1,207 @@
+import java.util.Scanner;
+import java.io.IOException;
+
+//엔터 -> \n \r -> 줄바꿈!
+
+
+//0(0) -> '0'(48) + 48
+//0(0) <- '0'(48) - 48
+
+//A(65) -> a(97) +32
+//A(65) <- a(97) -32
+
+// 1(0) -> "0" String.valueOf(숫자) or 숫자+""
+// 1(0) <- "0" Integer.parseInt("string")
+
+
+//
+
+//read() 쓸것
+
+//문제 난수 -> 중복 제거
+class BaseBall{
+	public static void main(String[] args) throws IOException {
+		Scanner scan = new Scanner(System.in);
+	
+        String strLine = null;
+
+
+
+
+		int[] com = new int[3];
+		int[] answerNum = new int[3];//필드로 잡기
+		int strike = 0;
+		int ball = 0;
+		int temp = 0;
+
+
+
+		// do{
+		// }while(true);문으로 표현해도 된다!
+
+
+		
+
+
+
+		while(true){
+
+
+		System.out.print(" 게임을 실행하시겠습니까? (y/n) ");
+		String gameStart = scan.nextLine();
+
+
+		if(gameStart.equals("y")){
+			System.out.println(" 게임을 시작하겠습니다 ");
+			break;
+		}
+
+
+	
+		}
+
+
+		//난수 생성 및 중복제거⭐
+		for(int i =0; i < 3; i++){
+
+			com[i] = (int)(Math.random()*9) + 1;
+
+			for(int j =0; j < i; j++){
+
+				if(com[i] == com[j]){
+
+					i--;
+					break;
+
+		
+				
+
+				} 
+
+			}
+
+
+	
+	
+		
+			
+		}
+
+
+		System.out.println(com[0]);
+		System.out.println(com[1]);
+		System.out.println(com[2]);
+
+
+
+	
+
+
+
+
+
+
+		for(int k = 0; k < 5; k++){
+
+
+
+		//숫자 입력 받기
+		
+		System.out.print(" 숫자 입력 (1-9 중 3숫자 선택):");
+		// scan.nextLine();
+
+		
+
+		// int userNum = System.in.read() -48;
+		// answerNum[0] = userNum;	
+
+		// userNum = System.in.read() -48;
+		// answerNum[1] = userNum;
+
+		// userNum = System.in.read() -48;//ASCII 코드 문제!
+		// answerNum[2] = userNum;
+		// 위 문장을 for문으로 옮김
+
+		for(int i =0; i< answerNum.length; i++){
+			answerNum[i] = System.in.read() -48;
+
+		}
+		System.in.read();//d
+		System.in.read();
+
+		//answerNum[0] = userNum;
+		//BufferedReader를 이용할 수 있음
+
+		// String userNum = reader.readLine();
+		// String answer = scan.nextLine();
+		
+		System.out.println(answerNum[0]);
+		System.out.println(answerNum[1]);
+		System.out.println(answerNum[2]);
+
+		
+
+
+
+
+
+
+
+
+
+		for(int i = 0 ; i < 3; i++){
+
+
+
+
+			if(com[i] == answerNum[i]){
+
+
+			System.out.println("Strike!!");
+			com[i] = temp;
+
+			strike ++;
+
+
+			}else{
+					for(int j =0; j <3; j++){
+						if(com[i] == answerNum[j]){
+
+							System.out.println("Ball!!");
+							com[i] =temp;
+							ball ++;
+
+
+						}
+					}
+				}
+
+
+		
+
+		
+
+
+
+	}
+	System.out.println("\n" + strike + " 스트라이크" + ball + " 볼");
+	if(strike == 3 ){
+		System.out.println("모두 맞추셨습니다!");
+		break;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+	}
+
+	
+}
