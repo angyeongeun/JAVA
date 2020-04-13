@@ -1,0 +1,240 @@
+
+import java.util.Scanner;
+
+// class MemberDTO{
+// 	private String name;
+// 	private int age;
+// 	private String phone, address;
+// 	//클래스로 구현은 하지 않음
+
+
+
+
+// 	public void setName(String name){
+// 		this.name = name;
+// 	}
+// 	public void setAge(int age){
+// 		this.age = age;
+// 	}
+// 	public void setPhone(String phone){
+// 		this.phone = phone;
+// 	}
+// 	public void setAdress(String address){
+// 		this.address =address;
+// 	}
+
+
+
+// 	public String getName(){return name;}
+// 	public int getAge(){return age;}
+// 	public String getPhone(){return phone;}
+// 	public String getAdress(){return address;}
+
+
+
+
+
+
+// }
+
+
+
+
+class MemberMain{
+	Scanner scan = new Scanner(System.in);
+	// MemberDTO[] dto = new MemberDTO[5];
+	int member = 0;
+
+
+
+
+	int[] row = new int[5];
+
+	String[] name = new String[5];
+	int[] age = new int[5];
+	String[] phone = new String[5];
+	String[] address =new String[5];
+
+
+
+
+	public void menu(){
+
+		while(true){
+
+		System.out.println("------------------------------------------------");
+		System.out.println("| 1. 가입  2. 출력  3. 수정  4. 탈퇴  5. 끝내기 |");
+		System.out.println("------------------------------------------------");
+		System.out.print("> ");
+		int userChoice = scan.nextInt();
+
+
+		
+
+
+		if(userChoice == 1) this.insert();
+		else if(userChoice == 2) this.list();
+		else if(userChoice == 3) this.update();
+		else if(userChoice == 4) this.delete();
+		else if(userChoice ==5) break;
+		else System.out.println("only 1-5");
+
+
+		
+		}
+
+		
+	
+
+	}
+
+
+
+
+	public void insert(){
+
+		if(member >= 5){
+				System.out.println(" 5명의 정원이 꽉 찼습니다! ");
+				return; // 메소드를 벗어나라!
+
+		}else{
+			
+
+			for(int i =0; i< member; i++){
+				if(age[i] == 0){//null 값에 회원이 배정될 수 있게함
+					member = i;
+
+				}
+
+			}
+			
+		member ++;
+		scan.nextLine();	
+		System.out.print("이름 : ");
+		name[member-1] =  scan.nextLine();
+		// dto.setName(name[member-1]); //fo문 사용하는 경우 dto[i].setName 으로 돌림
+		
+		
+
+		System.out.print("나이 : ");
+		age[member-1] = scan.nextInt();
+		// dto.setAge(age[member-1]);
+		scan.nextLine();
+		
+
+
+		System.out.print("핸드폰 : ");
+		phone[member-1] = scan.nextLine();
+		// dto.setPhone(phone[member-1]);
+		
+
+		System.out.print("주소 : ");
+		address[member-1] = scan.nextLine();	
+		// dto.setAdress(address[member-1]);
+
+
+		}
+	
+
+	}
+
+	public void list(){
+
+		System.out.println("MemberId\tName\tAge\tPhone\tAdress");
+
+		for(int i = 0; i < row.length; i++){
+
+		System.out.println(i+1 + "\t"+ "\t"+
+					name[i]+"\t"+
+					age[i]+"\t"+
+					phone[i]+"\t"+
+					address[i]);
+		}
+
+
+	}
+
+	public void update(){
+
+
+		for(int i = 0; i < row.length; i++){
+
+			System.out.println(i+1 + "\t"+ name[i]+"\t"+
+							 age[i]+"\t"+
+							 phone[i]+"\t"+
+							 address[i]);
+		}
+
+		
+		System.out.print("수정할 ID : ");
+		int id = scan.nextInt();
+	
+
+
+			scan.nextLine();
+			System.out.print("수정할 이름  : ");
+			name[id-1] =  scan.nextLine();
+			
+
+			System.out.print("수정할 나이 : ");
+			age[id-1] = scan.nextInt();
+			scan.nextLine();
+
+			System.out.print("수정할 핸드폰 번호 : ");
+			phone[id-1] = scan.nextLine();
+			
+
+			System.out.print("수정할 주소 : ");
+			address[id-1] = scan.nextLine();
+			
+	
+	}
+
+	public void delete(){
+
+
+		for(int i = 0; i < row.length; i++){
+
+			System.out.println(i+1 + "\t"+ name[i]+"\t"+
+							 age[i]+"\t"+
+							 phone[i]+"\t"+
+							 address[i]);
+			}
+
+			System.out.print("탈퇴할 ID : ");
+			int id = scan.nextInt();
+
+			name[id-1] = null;
+			age[id-1] = 0;
+			phone[id-1] = null;
+			address[id-1] = null;
+			member --;
+
+
+	}
+
+
+
+
+
+
+
+
+	public static void main(String[] args){
+		Scanner scan = new Scanner(System.in);
+		MemberMain main = new MemberMain();
+			
+
+			main.menu();
+			
+
+			
+		
+	}
+
+
+
+
+	
+}
+
