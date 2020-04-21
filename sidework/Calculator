@@ -1,0 +1,292 @@
+// import java.awt.Frame;
+// import java.awt.Button;
+// import java.awt.Panel;
+// import java.awt.GridLayout;
+// import java.awt.Label;
+// import java.awt.Color;
+import java.awt.*;
+import java.awt.event.*;
+import java.text.*;
+//버퍼로 표현한 버전을 추가하자!
+
+
+//inputduf ----> "2" press -> dispL에 "2+"로 올라감
+//inputL은 0
+//연산자가 들어가면 dipL
+//중간결과/처음/ result
+//연산자/op
+//double result;
+//int op =0;
+//1. op ==0 인지 물어봄
+//result의 값을 대입
+//op에 연산자 대입
+// -----------------------
+// 2. op ==0 인지 물어봄
+// op ==0이 아니면 result랑 지금 들어온 값이랑 계산해서 결과 result
+// op에 연산자 대입
+
+
+
+class Calculator extends Frame implements ActionListener{
+	private Label dispL, inputL;
+	private StringBuffer dispBuf, inputBuf;
+	private Button[] button;
+	private double result;
+	private char op;
+	private DecimalFormat df = new DecimalFormat("#,###.###");
+	String[] digitButton = {"←", "C", "7", "8", 
+	"9", "/", "4", "5", 
+	"6", "*","1", "2", 
+	"3", "-", ".", "0", "=", "+" };
+	String[] operator = {"/","*","-","+"};
+	
+
+	
+
+
+
+
+	public Calculator(){
+	
+		button = new Button[digitButton.length]; 
+
+	
+
+
+		//Label 
+
+		dispL = new Label("0",Label.RIGHT);
+		inputL = new Label("",Label.RIGHT);
+
+		dispL.setBounds(30,50,240,30);
+		this.add(dispL);
+		dispL.setBackground(Color.WHITE);
+		dispBuf = new StringBuffer();
+	
+
+		inputL.setBounds(30,90,240,30);
+		add(inputL);
+		inputL.setBackground(Color.WHITE);
+		inputBuf = new StringBuffer("0");
+	
+
+		setLayout(null);
+		this.setBounds(900,200,300,440);
+
+	
+
+
+		//digitButton
+
+		button[0] = new Button(digitButton[0]);
+ 		button[0].setBounds(30,130,115,30);
+ 		this.add(button[0]);
+ 		button[0].addActionListener(this);
+ 		button[1] = new Button(digitButton[1]);
+ 		button[1].setBounds(155,130,115,30);
+ 		this.add(button[1]);
+ 		button[1].addActionListener(this);
+
+
+
+
+
+		int x = 30;
+		int y = 40;
+		int spaceX = 0;
+		int width = 50;
+		int height = 50;
+		int spaceY = 0;
+		int count = 4;
+
+
+
+
+
+		for(int j = 2 ; j < 18; j+=4){
+
+
+			for(int i = j; i < j+4; i++){
+
+
+			button[i] = new Button(digitButton[i]);
+
+
+			button[i].setBounds(30+spaceX,130+ y + spaceY,width,height);
+ 			this.add(button[i]);
+ 			button[i].addActionListener(this);
+ 			spaceX += width+13;
+
+
+			}
+
+			spaceX =0;
+			spaceY += width+13;
+
+		}
+
+
+
+
+
+		setBackground(new Color(125,190,255)); //배경 색깔
+
+
+		setVisible(true); //나타나게 함
+
+		this.addWindowListener(new WindowExit());
+
+	}
+	
+	public void actionPerformed(ActionEvent e){
+		String temp;	
+		String action = e.getActionCommand();
+		// inputL.setText(inputL.getText()+e.getActionCommand());
+		if(action == "1" ||
+		   action == "2" ||
+		   action == "3" ||
+		   action == "4" ||
+		   action == "5" || 
+		   action == "6" || 
+		   action == "7" || 
+		   action == "8" || 
+		   action == "9" ||
+		   action == "0"){
+
+
+
+
+
+		if(inputBuf.length() == 1 && inputBuf.toString().equals("0")){
+			//문자를 눌렀는데
+			//남아있는 문자가 1개인데 그게 0이면, 없애주고 화면에 출력!
+			inputBuf.delete(0, 1);
+		}
+		
+
+
+		inputBuf.append(action);
+		inputL.setText(inputBuf + "");
+		//inputL.setText(df.format(Double.parseDouble(inputBuf+"")));
+
+
+
+		
+
+		
+		
+		}if(action.equals("C")){
+			dispBuf.delete(0, dispBuf.length()); //없애고 0으로 바꾸기
+			inputBuf.delete(0, inputBuf.length());
+			inputBuf.append("0");
+			
+			dispL.setText("");
+			inputL.setText("0");	
+
+
+		}else if(action.equals("←")){
+		// //backspace 를 계속 눌러도 exception 에러가 나지않게  
+		inputBuf.delete(inputBuf.length()-1,inputBuf.length());
+		if(inputBuf.length() == 0) inputBuf.append("0");
+		inputL.setText(inputBuf + "");
+
+		}else if(action.equals(".")){
+			if(inputBuf.indexOf(".") == -1){ //.없으면 찍어라
+				inputBuf.append(".");
+			}
+			inputL.setText(inputBuf+"");
+
+
+
+
+
+		}else if(action == "/" ||
+				 action == "*" ||
+				 action == "-" ||
+				 action == "+"){
+
+
+
+			if(inputBuf.substring(inputBuf.length()-1).indexOf(action) == -1 ){
+
+			   inputBuf.delete(0,inputBuf.length()-1);
+			   inputL.setText(inputBuf + "");
+
+			   inputBuf.append(action);
+			   dispL.setText(inputBuf + "");
+
+
+
+		
+			   
+
+			}
+
+
+
+		}else if(action == "+"){
+
+		}else if(action == "-"){
+
+		}else if(action == "*"){
+
+		}else if(action == "/"){
+
+		}else if(){
+
+		}
+
+
+
+
+
+//inputduf ----> "2" press -> dispL에 "2+"로 올라감
+//inputL은 0
+//연산자가 들어가면 dipL
+//중간결과/처음/ result
+//연산자/op
+//double result;
+//int op =0;
+//1. op ==0 인지 물어봄
+//result의 값을 대입
+//op에 연산자 대입
+// -----------------------
+// 2. op ==0 인지 물어봄
+// op ==0이 아니면 result랑 지금 들어온 값이랑 계산해서 결과 result
+// op에 연산자 대입
+
+
+
+
+
+
+		
+	
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	public static void main(String[] args){
+
+		new Calculator();
+
+	}
+
+
+}
+
+
