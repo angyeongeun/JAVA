@@ -138,6 +138,27 @@ class Calculator extends Frame implements ActionListener{
 
 	}
 	
+
+
+
+
+
+	public void calc(){
+			//아무 값도 없을 때
+			if(op == 0) result = Double.parseDouble(inputBuf+""); 
+			else if(op=='+') result = result + Double.parseDouble(inputBuf+"");
+			else if(op=='-') result = result - Double.parseDouble(inputBuf+"");
+			else if(op=='*') result = result * Double.parseDouble(inputBuf+"");
+			else if(op=='/') result = result / Double.parseDouble(inputBuf+"");
+			//문자열ㅇ서 double형 객체로 바꾸는 방법 -> parseDouble
+
+			}
+
+
+
+
+
+	
 	public void actionPerformed(ActionEvent e){
 		String temp;	
 		String action = e.getActionCommand();
@@ -175,7 +196,9 @@ class Calculator extends Frame implements ActionListener{
 
 		
 		
-		}if(action.equals("C")){
+		}else if(action.equals("C")){
+
+
 			dispBuf.delete(0, dispBuf.length()); //없애고 0으로 바꾸기
 			inputBuf.delete(0, inputBuf.length());
 			inputBuf.append("0");
@@ -184,11 +207,15 @@ class Calculator extends Frame implements ActionListener{
 			inputL.setText("0");	
 
 
+
+
 		}else if(action.equals("←")){
 		// //backspace 를 계속 눌러도 exception 에러가 나지않게  
 		inputBuf.delete(inputBuf.length()-1,inputBuf.length());
 		if(inputBuf.length() == 0) inputBuf.append("0");
 		inputL.setText(inputBuf + "");
+
+
 
 		}else if(action.equals(".")){
 			if(inputBuf.indexOf(".") == -1){ //.없으면 찍어라
@@ -198,62 +225,80 @@ class Calculator extends Frame implements ActionListener{
 
 
 
-
-
-		}else if(action == "/" ||
-				 action == "*" ||
-				 action == "-" ||
-				 action == "+"){
-
-
-
-			if(inputBuf.substring(inputBuf.length()-1).indexOf(action) == -1 ){
-
-			   inputBuf.delete(0,inputBuf.length()-1);
-			   inputL.setText(inputBuf + "");
-
-			   inputBuf.append(action);
-			   dispL.setText(inputBuf + "");
-
-
-
-		
-			   
-
-			}
-
-
-
 		}else if(action == "+"){
+			if(inputBuf.length() ==0) return;
+			calc();
+			op = '+';
+
+			dispBuf.append(inputBuf + " + ");
+
+			dispL.setText(dispBuf + "");
+			inputL.setText(df.format(result));// 중간결과
+
+			inputBuf.delete(0, inputBuf.length());
+
+
 
 		}else if(action == "-"){
+			if(inputBuf.length() ==0) return;
+			calc();
+			op = '-';
+
+			dispBuf.append(inputBuf + " - ");
+
+			dispL.setText(dispBuf + "");
+			inputL.setText(df.format(result));
+
+			inputBuf.delete(0, inputBuf.length());
+
+
 
 		}else if(action == "*"){
+			if(inputBuf.length() ==0) return;
+			calc();
+			op = '*';
+
+			dispBuf.append(inputBuf + " * ");
+
+			dispL.setText(dispBuf + "");
+			inputL.setText(df.format(result));
+
+			inputBuf.delete(0, inputBuf.length());
+
+
 
 		}else if(action == "/"){
+			if(inputBuf.length() ==0) return;
+			calc();
+			op = '/';
 
-		}else if(){
+			dispBuf.append(inputBuf + " / ");
+
+			dispL.setText(dispBuf + "");
+			inputL.setText(df.format(result));
+
+			inputBuf.delete(0, inputBuf.length());
+
+
+
+		}else if(action == "="){
+			if(inputBuf.length() ==0) return;
+			calc();
+			op = 0;
+
+			dispBuf.append(inputBuf + " = ");
+
+			dispL.setText(dispBuf + "");
+			inputL.setText(df.format(result));
+
+			dispBuf.delete(0, dispBuf.length());
+			inputBuf.delete(0, inputBuf.length());
+
+
+
 
 		}
 
-
-
-
-
-//inputduf ----> "2" press -> dispL에 "2+"로 올라감
-//inputL은 0
-//연산자가 들어가면 dipL
-//중간결과/처음/ result
-//연산자/op
-//double result;
-//int op =0;
-//1. op ==0 인지 물어봄
-//result의 값을 대입
-//op에 연산자 대입
-// -----------------------
-// 2. op ==0 인지 물어봄
-// op ==0이 아니면 result랑 지금 들어온 값이랑 계산해서 결과 result
-// op에 연산자 대입
 
 
 
@@ -288,5 +333,6 @@ class Calculator extends Frame implements ActionListener{
 
 
 }
+
 
 
